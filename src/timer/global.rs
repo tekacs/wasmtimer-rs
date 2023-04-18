@@ -60,7 +60,7 @@ fn schedule_callback(timer: Arc<Mutex<Timer>>, when: Duration) {
                     Duration::new(0, 0)
                 }
             })
-            .unwrap_or(Duration::from_secs(5));
+            .unwrap_or(Duration::from_millis(100));
         drop(timer_lock);
 
         schedule_callback(timer, sleep_dur);
