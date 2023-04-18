@@ -55,7 +55,7 @@ fn schedule_callback(timer: Arc<Mutex<Timer>>, when: Duration) {
             .next_event()
             .map(|next_event| {
                 if next_event > now {
-                    next_event - now
+                    (next_event - now).min(Duration::from_millis(100))
                 } else {
                     Duration::new(0, 0)
                 }
